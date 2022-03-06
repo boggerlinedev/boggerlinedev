@@ -1,0 +1,290 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("boggerline (private)", "Midnight")
+local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+--inf jump
+   MainSection:NewToggle("inf jump", "inf jump", function(state)
+        if state then
+            local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end) 
+
+        else
+
+            local InfiniteJumpDisable = false
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpDisable then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("jumping")
+	end
+end) 
+        end
+    end)
+
+--speed
+MainSection:NewToggle("speed", "i show speed", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50 
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20 
+    end
+end)
+
+--fov change
+MainSection:NewToggle("PRO Fov", "90 fov", function(state)
+    if state then
+        local FOV = 90
+        game.Workspace.Camera.FieldOfView = FOV
+    else
+        local FOV = 70
+game.Workspace.Camera.FieldOfView = FOV
+    end
+end)
+
+--fly
+MainSection:NewToggle("Fly", "need anticheat disabler by dming me a private one at roseychan<3#8897", function(state)
+    if state then
+        repeat wait() until game.Players.LocalPlayer.Character
+ 
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character
+        local hum = char:WaitForChild("Humanoid")
+        local Torso = char:WaitForChild("LowerTorso")
+        local Mouse = plr:GetMouse()
+        local toggle = false
+         
+        Mouse.KeyDown:Connect(function(key)
+            if key == "r" then
+                if toggle == false then
+                    toggle = true
+                    local Anim = Instance.new("Animation")
+                    Anim.AnimationId = "rbxassetid://7189034627"
+                    local PlayAnim = hum:LoadAnimation(Anim)
+                    PlayAnim:Play()
+                    local BV = Instance.new("BodyVelocity",Torso)
+                    BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+                    while toggle == true do
+                        BV.Velocity = Mouse.Hit.lookVector*50
+                        wait()
+                    end
+                end
+                if toggle == true then
+                    toggle = false
+                    Torso:FindFirstChildOfClass("BodyVelocity"):remove()
+                    local tracks = hum:GetPlayingAnimationTracks()
+                    for i, stoptracks in pairs(tracks) do
+                        stoptracks:Stop()
+                    end
+                    local Anim = Instance.new("Animation")
+                    Anim.AnimationId = "http://www.roblox.com/asset/?id=7189034627"
+                    local PlayAnim = hum:LoadAnimation(Anim)
+                    PlayAnim:Play()
+                end
+            end
+        end)
+        
+    else
+
+        repeat wait() until game.Players.LocalPlayer.Character
+ 
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character
+        local hum = char:WaitForChild("Humanoid")
+        local Torso = char:WaitForChild("LowerTorso")
+        local Mouse = plr:GetMouse()
+        local toggle = false
+         
+        Mouse.KeyDown:Connect(function()
+            if key == "" then
+                if toggle == false then
+                    toggle = true
+                    local Anim = Instance.new("Animation")
+                    Anim.AnimationId = "rbxassetid://7189034627"
+                    local PlayAnim = hum:LoadAnimation(Anim)
+                    PlayAnim:Play()
+                    local BV = Instance.new("BodyVelocity",Torso)
+                    BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+                    while toggle == false do
+                        BV.Velocity = Mouse.Hit.lookVector*50
+                        wait()
+                    end
+                end
+                if toggle == true then
+                    toggle = false
+                    Torso:FindFirstChildOfClass("BodyVelocity"):remove()
+                    local tracks = hum:GetPlayingAnimationTracks()
+                    for i, stoptracks in pairs(tracks) do
+                        stoptracks:Stop()
+                    end
+                    local Anim = Instance.new("Animation")
+                    Anim.AnimationId = "http://www.roblox.com/asset/?id=7189034627"
+                    local PlayAnim = hum:LoadAnimation(Anim)
+                    PlayAnim:Play()
+                end
+            end
+        end) 
+    end
+end)
+
+
+--low gravity
+
+MainSection:NewToggle("low gavity", "low gravity", function(state)
+    if state then
+        Game.workspace.Gravity = 5
+    else
+        Game.workspace.Gravity = 20
+    end
+end)
+
+--Load vape for promotion menu
+
+MainSection:NewButton("Vape loader", "vape", function(state)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))() 
+end)
+
+
+--spider
+
+MainSection:NewToggle("spider", "go to a wall and press X", function(state)
+    if state then   
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/ItsDishan/SpidermanScript/main/Spider-Man'), true))()
+    else
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/ItsDishan/SpidermanScript/main/Spider-Man'), true))()
+    end
+end)
+
+--Noboline fly beta
+
+MainSection:NewButton("Noboline fly", "noboline fly", function(state)
+    local Player = game.Players.LocalPlayer
+    local Character = Player.Character or Player.CharacterAdded:Wait()
+    local Humanoid = Character:WaitForChild("Humanoid")
+    local Anim = Instance.new("Animation")
+    Anim.AnimationId = "rbxassetid://2522658890"
+    local PlayAnim = Humanoid:LoadAnimation(Anim)
+    local HumaoidRP = Character:WaitForChild("HumanoidRootPart")
+    local UIS = game:GetService("UserInputService")
+    local Mouse = Player:GetMouse()
+    
+    
+    local TapTime = .25
+    local Tapped = false
+    local Toggle = false
+    
+    UIS.InputBegan:Connect(function(Input)
+        if Input.KeyCode == Enum.KeyCode.Space then
+            if not Tapped then
+                Tapped = true
+                wait(TapTime)
+                Tapped = false
+            else
+                if Toggle == false then
+                    local Jump = Instance.new("BodyVelocity",HumaoidRP)
+                    Jump.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+                    Jump.Velocity = Vector3.new(0,10,0)
+                    game.Debris:AddItem(Jump,.5)
+                    wait(.5)
+                    HumaoidRP.Anchored = true
+                    Toggle = true
+                elseif Toggle == true then
+                    Toggle = false
+                    HumaoidRP.Anchored = false
+                    local Children = HumaoidRP:GetChildren()
+                    for i, child in pairs(Children) do
+                        if child:IsA("BodyVelocity") then
+                            child:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+    end)
+    UIS.InputBegan:Connect(function(Input)
+        if Input.KeyCode == Enum.KeyCode.W then
+            if Toggle == false then return end
+            PlayAnim:Play()
+            HumaoidRP.Anchored = false
+            if HumaoidRP:FindFirstChildOfClass("BodyVelocity") then
+                HumaoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
+            end
+            local Forward = Instance.new("BodyVelocity",HumaoidRP)
+            Forward.Name = "ForwardMovement"
+            Forward.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+            local Gyro = Instance.new("BodyGyro",HumaoidRP)
+            Gyro.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+            Gyro.D = 90
+            Gyro.P = 90
+            while Toggle == true do
+                Forward.Velocity = Mouse.Hit.lookVector*45
+                Gyro.CFrame = Mouse.Hit
+                wait()
+            end
+        end
+    end)
+    UIS.InputEnded:Connect(function(Input)
+        if Input.KeyCode == Enum.KeyCode.W then
+            if Toggle == false then return end
+            if HumaoidRP:FindFirstChild("ForwardMovement") then
+                HumaoidRP.ForwardMovement:Destroy()
+                HumaoidRP.Anchored = true
+                PlayAnim:Stop()
+                if HumaoidRP:FindFirstChildOfClass("BodyGyro") then
+                    HumaoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
+                end
+            end
+        end
+    end)
+    UIS.InputBegan:Connect(function(Input)
+        if Input.KeyCode == Enum.KeyCode.S then
+            if Toggle == false then return end
+            HumaoidRP.Anchored = false
+            if HumaoidRP:FindFirstChildOfClass("BodyVelocity") then
+                HumaoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
+            end
+            local Back = Instance.new("BodyVelocity",HumaoidRP)
+            Back.Name = "BackMovement"
+            Back.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+            local Gyro = Instance.new("BodyGyro",HumaoidRP)
+            Gyro.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+            Gyro.D = 80
+            Gyro.P = 80
+            while Toggle == true do
+                Back.Velocity = Mouse.Hit.lookVector*-40
+                Gyro.CFrame = Mouse.Hit
+                wait()
+            end
+        end
+    end)
+    UIS.InputEnded:Connect(function(Input)
+        if Input.KeyCode == Enum.KeyCode.S then
+            if Toggle == false then return end
+            if HumaoidRP:FindFirstChild("BackMovement") then
+                HumaoidRP.BackMovement:Destroy()
+                HumaoidRP.Anchored = true
+                if HumaoidRP:FindFirstChildOfClass("BodyGyro") then
+                    HumaoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
+                end
+            end
+        end
+    end)
+    
+    UIS.InputEnded:Connect(function(Input)
+        if Input.KeyCode == Enum.KeyCode.A then
+            if Toggle == false then return end
+            if HumaoidRP:FindFirstChild("Left movement") then
+                HumaoidRP.LeftMovement:Destroy()
+                HumaoidRP.Anchored = true
+                if HumaoidRP:FindFirstChildOfClass("BodyGyro") then
+                    HumaoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
+                end
+            end
+        end
+    end) print("Clicked")
+end)
+
+
+--visuals

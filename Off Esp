@@ -1,0 +1,31 @@
+ esp.box.Visible = false;
+       esp.boxoutline.Visible = false;
+   end
+end
+
+-- main
+for _, player in next, players:GetPlayers() do
+   if player ~= localPlayer then
+       createEsp(player);
+   end
+end
+
+players.PlayerAdded:Connect(function(player)
+   createEsp(player);
+end);
+
+players.PlayerRemoving:Connect(function(player)
+   removeEsp(player);
+end)
+
+runService:BindToRenderStep("esp", Enum.RenderPriority.Camera.Value, function()
+   for player, drawings in next, espCache do
+       if settings.teamcheck and player.Team == localPlayer.Team then
+           continue;
+       end
+
+       if drawings and player ~= localPlayer then
+           updateEsp(player, drawings);
+       end
+   end
+end)
